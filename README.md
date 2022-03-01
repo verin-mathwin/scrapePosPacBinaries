@@ -15,6 +15,6 @@ Forward/reverse separation can be stored within the trj_sep or gnss_pp_nav_sep f
 RMSEs for the associated trajectory files are stored in the smrmsg*.out file, covering (but not limited to) trajectory, attitude, and velocity errors.
 
 #secsOfWeekToLASTime
-A simple function to convert a seocnds-of-week value in a datframe row to LAS time (adjusted GPS).
+A simple function to convert a seconds-of-week value in a dataframe row to LAS time (adjusted GPS).
 
 As noted, these are supplied here without guarantee of accuracy, just the hope that they will be helpful.
