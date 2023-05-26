@@ -1,0 +1,21 @@
+def convert_sow_to_gps(file_path, leap_secs, year, month, day, hour, minute):
+    """
+    Converts SoW values in a space-separated text file to las_gps_secs and updates the file in-place.
+
+    :param file_path: Path to the text file.
+    :param leap_secs: Leap seconds at the time of flight.
+    :param year: Int year of flight including century.
+    :param month: Int month of flight.
+    :param day: Int day of month of flight.
+    :param hour: Hour of flight.
+    :param minute: Minute of flight.
+    """
+    with open(file_path, 'r+') as file:
+        lines = file.readlines()
+        file.seek(0)  # Reset file pointer to the beginning
+        for line in lines:
+            values = line.strip().split(' ')
+            sow = int(values[0])
+            las_gps_secs = utc_to_gps_for_SoW(year, month, day, hour, minute, sow, leap_secs)
+            file.write(f'{las_gps_secs} {" ".join(values[1:])}\n')
+        file.truncate()  # Remove any remaining content if the new file is smaller than the original
